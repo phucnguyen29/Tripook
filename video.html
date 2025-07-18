@@ -47,11 +47,12 @@
             box-shadow: 0 4px 15px rgba(176, 110, 68, 0.2);
         }
 
-        .video-container video {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
+        @media (max-width: 768px) {
+    .video-container video {
+        max-width: 100%;  /* Đảm bảo video không vượt quá chiều rộng màn hình */
+        height: auto;
+    }
+}
 
         p {
             font-size: 16px;
@@ -78,21 +79,22 @@
         .btn:hover {
             background-color: #E64A19;
         }
+        
     </style>
 </head>
 <body>
 
-    <h1>Chợ Nổi Cái Răng</h1>
-    <div class="subtitle">Một lát cắt văn hóa miền sông nước Cần Thơ</div>
+    <h1>Đền Hùng Cần Thơ</h1>
+    <div class="subtitle">Nét văn hóa lịch sử độc đáo của của thủ phủ miền Tây</div>
 
     <div class="video-container">
-        <video controls autoplay>
+        <video controls autoplay muted>
             <source src="TestIntro3.mp4" type="video/mp4">
         </video>
     </div>
 
     <p>
-        Hãy tưởng tượng bạn đang lướt nhẹ trên mặt nước trong buổi sớm tinh mơ, giữa những chiếc ghe chở đầy trái cây nhiệt đới và tiếng rao hàng thân quen vang vọng giữa sông. Chợ nổi Cái Răng không chỉ là nơi buôn bán mà còn là nơi lưu giữ linh hồn miền Tây – mộc mạc, chân chất, sống động và đầy màu sắc.
+        Đền Hùng Cần Thơ là công trình văn hoá tâm linh tiêu biểu ở miền Tây, tôn vinh các Vua Hùng dựng nước. Với kiến trúc truyền thống giữa không gian xanh mát, nơi đây là điểm đến ý nghĩa trong hành trình tìm về cội nguồn.
     </p>
 
     <button class="btn" onclick="window.location.href='index.html'">Quay lại Trang Chủ</button>
