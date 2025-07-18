@@ -47,9 +47,15 @@
             box-shadow: 0 4px 15px rgba(176, 110, 68, 0.2);
         }
 
+        .video-container video {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+            border-radius: 10px;
+        }
         @media (max-width: 768px) {
     .video-container video {
-        max-width: 100%;  /* Đảm bảo video không vượt quá chiều rộng màn hình */
+        max-width: 100%;
         height: auto;
     }
 }
@@ -88,7 +94,7 @@
     <div class="subtitle">Nét văn hóa lịch sử độc đáo của của thủ phủ miền Tây</div>
 
     <div class="video-container">
-        <video controls autoplay muted>
+        <video controls autoplay muted playsinline webkit-playsinline>
             <source src="TestIntro3.mp4" type="video/mp4">
         </video>
     </div>
