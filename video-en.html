@@ -1,182 +1,56 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video</title>
-  <link rel="icon" href="airplane.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Serif:wght@600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Noto Serif', serif;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: linear-gradient(to bottom, #fff8ec, #ffe0b2);
-      overflow-x: hidden;
-      position: relative;
-      animation: fadeIn 1s ease-in-out; /* hiệu ứng load */
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 28px;
-      color: #8B0000;
-      margin: 20px 10px 6px;
-      text-align: center;
-    }
-
-    .subtitle {
-      font-style: italic;
-      color: #4B2E1A;
-      font-size: 14px;
-      margin-bottom: 16px;
-      text-align: center;
-      padding: 0 10px;
-    }
-
-    .video-container {
-      width: 95%;
-      max-width: 500px;
-      margin: 0 auto 20px;
-      background: #fff;
-      padding: 8px;
-      border: 2px solid #c49a6c;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(92,46,12,0.2);
-      box-sizing: border-box;   /* quan trọng */
-    }
-
-    .video-container iframe {
-      width: 100%;
-      max-width: 100%;  /* ngăn tràn */
-  display: block;   /* bỏ khoảng thừa inline */
-  border-radius: 8px;
-    }
-
-    p {
-      font-size: 15px;
-      color: #4e3c2d;
-      text-align: center;
-      padding: 0 14px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      padding: 12px 24px;
-      font-size: 15px;
-      cursor: pointer;
-      background: linear-gradient(135deg, #d2691e, #b45f06);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-weight: bold;
-      box-shadow: 0 4px 12px rgba(180,95,6,0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      margin-bottom: 20px;
-    }
-
-    .btn:hover {
-      background: linear-gradient(135deg, #8b4513, #b45f06);
-      transform: scale(1.05);
-      box-shadow: 0 6px 16px rgba(180,95,6,0.4);
-    }
-
-    /* Thanh navigation dưới màn hình */
-    .navbar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #5c2e0c;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      border-radius: 12px 12px 0 0;
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
-    }
-    .navbar a {
-      color: #fff8ec;
-      text-decoration: none;
-      font-size: 12px;
-      text-align: center;
-    }
-    .navbar i {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-      h1 { font-size: 24px; }
-      .subtitle { font-size: 13px; }
-      p { font-size: 14px; }
-      .btn { width: 80%; font-size: 14px; }
-      .gallery img { width: 90px; height: 60px; }
-    }
-
-    .vimeo-wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* tỷ lệ 16:9 */
-  height: 0;
-  overflow: hidden;
-  border-radius: 8px;
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video</title>
+<link rel="icon" href="airplane.png" type="image/png">
+<style>
+body {
+  margin: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-
-.vimeo-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+video {
   width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 8px;
+  max-width: 700px;
+  border-radius: 10px;
+  background: black;
 }
-  </style>
+</style>
 </head>
 <body>
 
-  <h1>Hung Kings Temple in Can Tho</h1>
-  <div class="subtitle">A sacred destination preserving the soul of the nation in the heart of the Mekong Delta</div>
+<video id="video" controls playsinline autoplay></video>
 
- <div class="video-container">
-  <div class="vimeo-wrapper">
-    <iframe 
-      src="https://www.youtube.com/embed/BOrhbHqQjBE?si=T0oWRfnFFxVAGPb6?autoplay=1&controls=0&modestbranding=1&rel=0&playsinline=1" 
-      frameborder="0" 
-      allow="autoplay; fullscreen; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+const video = document.getElementById('video');
+const src = "https://vz-8ed2c125-652.b-cdn.net/8bcae79f-498b-4afe-96df-8b7559dc1051/playlist.m3u8";
 
-  <p>
-   Imagine yourself walking through a solemn space, standing before the majestic statue that symbolizes the roots of the Vietnamese people, where generations pay tribute to the Hung Kings for founding the nation. Located in the heart of Can Tho, the Hung Kings Temple is not only a unique architectural landmark but also a sacred symbol of national unity, preserving the timeless tradition of “drinking water, remember its source.”
-  </p>
-  
-  <p>
-At the Hung Kings Temple, you will experience the harmony between modern beauty and the profound depth of Vietnamese culture. It is a meaningful destination for worship, reflection, and remembrance, where every visitor can ignite their national pride and reconnect with the origins of Vietnam.
-  </p>
-</div>
+// Tải video HLS Bunny
+if (Hls.isSupported()) {
+  const hls = new Hls();
+  hls.loadSource(src);
+  hls.attachMedia(video);
+} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+  video.src = src;
+}
 
-  <button class="btn" onclick="window.location.href='index.html'">Back to Home</button>
-
+// Tự động xoay ngang khi người dùng bật fullscreen (Android)
+document.addEventListener('fullscreenchange', async () => {
+  if (document.fullscreenElement) {
+    try {
+      await screen.orientation.lock('landscape');
+    } catch (e) {
+      console.log("Không thể xoay ngang tự động (iOS giới hạn).");
+    }
+  }
+});
+</script>
 
 </body>
-
 </html>
-
-
-
-
 
